@@ -7,3 +7,12 @@ class SensorDTO(BaseModel):
     descripcion: str
     dispositivo_id: int
     
+class CreateSensorDTO(BaseModel):
+    referencia: str
+    descripcion: str
+    dispositivo_id: int
+    
+class UpdateSensorDTO(BaseModel):
+    referencia: Optional[str] = None
+    descripcion: Optional[str] = None
+    dispositivo_id: Optional[int] = None

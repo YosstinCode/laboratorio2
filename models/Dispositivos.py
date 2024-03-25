@@ -8,3 +8,4 @@ class Dispositivos(Base_table):
     id = Column(Integer, primary_key=True, index=True, autoincrement=True, name="id_dispositivo")
     W = Column(String(20), nullable=False, name="W")
     N = Column(String(20), nullable=False, name="N")
+    sensores = relationship("Sensores", backref="dispositivos", lazy=True)

@@ -20,14 +20,3 @@ SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
 # Clase base para las tablas como una plantilla
 Base_table = declarative_base(metadata=MetaData()) 
-
-# Crear las tablas en la DB
-Base_table.metadata.create_all(engine) 
-
-def get_db():
-    db = SessionLocal()
-    try:
-        yield db
-    finally:
-        db.close()
-
