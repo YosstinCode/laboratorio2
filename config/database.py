@@ -7,15 +7,17 @@ from dotenv import load_dotenv
 # Load environment variables
 load_dotenv()
 
-USER = os.getenv('USER')
-PASSWORD = os.getenv('PASSWORD')
-HOST = os.getenv('HOST')
-DATABASE = os.getenv('DATABASE')
+USER = os.environ.get('USER')
+PASSWORD = os.environ.get('PASSWORD')
+HOST = os.environ.get('HOST')
+DATABASE = os.environ.get('DATABASE')
+
+print(USER, PASSWORD, HOST, DATABASE)
 
 # Database connection
 engine = create_engine(f'postgresql://{USER}:{PASSWORD}@{HOST}/{DATABASE}')
 
-# Sesion para intereactuar con la DB
+# sesion para interactuar con la DB
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine) 
 
 # Clase base para las tablas como una plantilla
