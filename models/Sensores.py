@@ -9,5 +9,5 @@ class Sensores(Base_table):
     referencia = Column(String(20), nullable=False, name="referencia")
     descripcion = Column(Text, nullable=False, name="descripcion")
     dispositivo_id = Column(Integer, ForeignKey('dispositivos.id_dispositivo'), nullable=False, name="dispositivo_id")
-    lecturas = relationship("Lecturas", backref="sensores", lazy=True)
+    dispositivo = relationship("Dispositivos", backref="sensores", lazy=True)
     

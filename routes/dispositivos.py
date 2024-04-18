@@ -1,10 +1,10 @@
 from fastapi import APIRouter
 
-from services.dispositivo_service import DispositivoService
-from schemas.DispositivoDTO import CreateDispositivoDTO, UpdateDispositivoDTO
+from services.dispositivo_service import Dispositivo_service
+from schemas.DispositivoDTO import Create_dispositivoDTO, Update_dispositivoDTO
 
 dispositivos_router = APIRouter()
-dispositivo_service = DispositivoService() 
+dispositivo_service = Dispositivo_service()
 
 @dispositivos_router.get("/")
 async def get_all_dispositivos():
@@ -12,7 +12,7 @@ async def get_all_dispositivos():
 
 
 @dispositivos_router.post("/")
-async def create_dispositivo_route(dispositivo: CreateDispositivoDTO):
+async def create_dispositivo_route(dispositivo: Create_dispositivoDTO):
     return dispositivo_service.create(dispositivo)
 
 
@@ -22,7 +22,7 @@ async def get_one_dispositivos(dispositivo_id: int):
 
 
 @dispositivos_router.put("/{dispositivo_id}")
-async def update_dispositivo_route(dispositivo_id: int, dispositivo_updated: UpdateDispositivoDTO):
+async def update_dispositivo_route(dispositivo_id: int, dispositivo_updated: Update_dispositivoDTO):
     return dispositivo_service.update(dispositivo_id, dispositivo_updated)
 
 

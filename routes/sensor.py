@@ -1,10 +1,10 @@
 from fastapi import APIRouter
-from services.sensor_service import SensorService
-from schemas.SensorDTO import CreateSensorDTO, UpdateSensorDTO
+from services.sensor_service import Sensor_service
+from schemas.SensorDTO import Create_sensorDTO, Update_sensorDTO
 
 
 sensor_router = APIRouter()
-sensor_service = SensorService()
+sensor_service = Sensor_service()
 
 @sensor_router.get("/")
 async def get_all_sensores():
@@ -15,11 +15,11 @@ async def get_one_sensor(sensor_id: int):
     return sensor_service.get_one(sensor_id)
 
 @sensor_router.post("/")
-async def create_sensor(sensor: CreateSensorDTO):
+async def create_sensor(sensor: Create_sensorDTO):
     return sensor_service.create(sensor)
 
 @sensor_router.put("/{sensor_id}")
-async def update_sensor(sensor_id: int, sensor: UpdateSensorDTO):
+async def update_sensor(sensor_id: int, sensor: Update_sensorDTO):
     return sensor_service.update(sensor_id, sensor)
 
 @sensor_router.delete("/{sensor_id}")
