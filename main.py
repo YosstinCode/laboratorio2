@@ -16,7 +16,10 @@ from routes.Tipo_alerta import tipo_alerta_router
 from routes.Tipo_ave import tipo_ave_router
 from routes.Tipo_estado_alerta import tipo_estado_alerta_router
 from routes.Tipo_lectura import tipo_lectura_router
+from routes.graficas import graficas_router
+
 from config.database import engine, Base_table
+
 
 # Crear las tablas en la DB
 Base_table.metadata.create_all(engine)
@@ -26,7 +29,7 @@ app = FastAPI(root_path="/api/v1")
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins="*",
+    allow_origins=["*"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -53,3 +56,4 @@ app.include_router(tipo_lectura_router,
                    prefix="/tipo_lectura", tags=["Tipo_lectura"])
 app.include_router(caracteristicas_incubacion_router,
                    prefix="/caracteristicas_incubacion", tags=["Caracteristicas_incubacion"])
+app.include_router(graficas_router, prefix="/graficas/data", tags=["Graficas"])
